@@ -1,0 +1,16 @@
+;;amdev.lisp
+;;20191010Z
+;;jpt4
+;;SBCL
+;;AM dev site
+
+;TODO: How to direct ql to the correct library for ("/usr/lib/libssl.so")
+;and ("/usr/lib/libcrypto.so.1.1").
+(ql:quickload '(:hunchentoot :cl-who :parenscript :smackjack))
+
+(defpackage :test-site
+  (:use :cl :hunchentoot :cl-who :parenscript :smackjack))
+(in-package :test-site)
+
+(defparameter *server*
+  (start (make-instance 'easy-acceptor :address "localhost" :port 8080)))
